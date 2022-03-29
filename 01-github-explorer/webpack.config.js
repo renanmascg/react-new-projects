@@ -6,13 +6,13 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 module.exports = {
   mode: isDevelopment ? 'development' : 'production',
   devtool: isDevelopment ? 'eval-source-map': 'source-map',
-  entry: path.resolve(__dirname, 'src', 'index.jsx'), // arquivo de entrada
+  entry: path.resolve(__dirname, 'src', 'index.tsx'), // arquivo de entrada
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js"
   },
   resolve: {
-    extensions: [ '.js', '.jsx' ] // naturalmente só entende js, falamos para entender, também .jsx
+    extensions: [ '.js', '.jsx', '.ts','.tsx' ] // naturalmente só entende js, falamos para entender, também .jsx
   },
   devServer: {
     static: path.resolve(__dirname, 'public')
@@ -23,7 +23,7 @@ module.exports = {
   module: { // instruções de como organizar os arquivos
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.(j|t)sx$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       },
