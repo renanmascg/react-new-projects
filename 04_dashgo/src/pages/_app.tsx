@@ -1,12 +1,15 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import { AppProps} from 'next/app'
+import { AppProps } from 'next/app'
+import { SiderbarDrawerProvider } from '../contexts/SidebarDrawerContext'
 import { theme } from '../styles/theme'
 
 
-function MyApp({ Component, pageProps }:AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
+      <SiderbarDrawerProvider>
+        <Component {...pageProps} />
+      </SiderbarDrawerProvider>
     </ChakraProvider>
   )
 }
